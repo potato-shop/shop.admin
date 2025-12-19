@@ -33,6 +33,7 @@ declare module 'vue' {
     BTr: typeof import('bootstrap-vue-next/components/BTable')['BTr']
     ChoicesInput: typeof import('./src/components/ChoicesInput.vue')['default']
     ChoicesSelect: typeof import('./src/components/ChoicesSelect.vue')['default']
+    Cropper: typeof import('./src/components/Cropper.vue')['default']
     DropDown: typeof import('./src/components/DropDown.vue')['default']
     FileUpload: typeof import('./src/components/FileUpload.vue')['default']
     FlatPicker: typeof import('./src/components/FlatPicker.vue')['default']

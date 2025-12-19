@@ -2,7 +2,7 @@
   <VerticalLayout>
     <PageTitle title="商品列表" subtitle="eCommerce" />
 
-    <div ref="containerRef" class="cropper-container"></div>
+    <Cropper></Cropper>
 
     <b-row>
       <b-col cols="12">
@@ -272,33 +272,9 @@
 </template>
 
 <script setup lang="ts">
-import Cropper from 'cropperjs';
-
-const containerRef = ref<HTMLDivElement | null>(null);
-let cropperInstance: Cropper | null = null;
-
-onMounted(() => {
-  if (!containerRef.value) return;
-
-  const image = new Image();
-  image.src = '/path/to/image.jpg';
-  image.alt = 'Picture';
-
-  cropperInstance = new Cropper(image, {
-    container: containerRef.value,
-  });
-});
-
-onBeforeUnmount(() => {
-  if (cropperInstance) {
-    // Cropper 2.0 可能沒有 destroy 方法
-    cropperInstance = null;
-  }
-});
-
 import VerticalLayout from '@/layouts/VerticalLayout.vue';
 import PageTitle from '@/components/PageTitle.vue';
-import { onMounted, watch, ref, onBeforeUnmount } from 'vue';
+import { onMounted, watch, ref } from 'vue';
 import VueSelect from 'vue3-select-component';
 import {
   apiBase,
@@ -310,6 +286,7 @@ import {
   updateProductImageAPI,
 } from '@/api/index';
 import { showToast } from '@/helpers/toast';
+import Cropper from '@/components/Cropper.vue';
 
 interface Category {
   ID: number;
