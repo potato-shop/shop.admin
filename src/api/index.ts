@@ -28,13 +28,13 @@ export async function loginAPI(payload: { Email: string; Password: string }) {
 }
 
 export async function getUserAPI(): Promise<User> {
-  const res = await axios.get(`/api/admin/me`);
+  const res = await axios.get(`/api/me`);
   return res.data;
 }
 
 // 種類
 export async function addCategoryAPI(payload: { Name: string; Description: string }) {
-  return await axios.post('/api/admin/categories', payload);
+  return await axios.post('/api/category', payload);
 }
 export async function updateCategoryAPI(payload: { CategoryID: number; Name: string; Description: string }) {
   return await axios.put(`/api/admin/categories/${payload.CategoryID}`, {
@@ -44,7 +44,7 @@ export async function updateCategoryAPI(payload: { CategoryID: number; Name: str
 }
 export async function getCategoryListAPI(payload: { currentPage: number; perPage: number; name: string }) {
   return await axios.get(
-    `/api/admin/categories?currentPage=${payload.currentPage}&perPage=${payload.perPage}&name=${payload.name}`
+    `/api/categories?currentPage=${payload.currentPage}&perPage=${payload.perPage}&name=${payload.name}`
   );
 }
 

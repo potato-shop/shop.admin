@@ -22,7 +22,7 @@
           v-model="v.password.$model"
           placeholder="請輸入密碼"
         />
-        <div v-if="v.password.$errors" class="text-danger">
+        <div v-if="v.password.$errors" class="text-000danger">
           <span v-for="(err, idx) in v.password.$errors" :key="idx">
             {{ err.$message }}
           </span>
