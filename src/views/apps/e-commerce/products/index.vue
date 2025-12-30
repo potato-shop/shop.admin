@@ -286,7 +286,6 @@ import {
   updateProductImageAPI,
 } from '@/api/index';
 import { showToast } from '@/helpers/toast';
-import Cropper from '@/components/Cropper.vue';
 
 interface Category {
   ID: number;
