@@ -35,4 +35,9 @@ jobs:
 
       - name: Deploy to VM
         run: |
+
+          # 先清空目標目錄
+          ssh -i ~/.ssh/deployer ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "rm -rf /home/deployer/app/admin/*"
+          
+          # 複製新檔案
           scp -i ~/.ssh/deployer -r dist/* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/deployer/app/admin/
