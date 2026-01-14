@@ -29,15 +29,15 @@ jobs:
       - name: Setup SSH
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deployer
-          chmod 600 ~/.ssh/deployer
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/cicd-robot
+          chmod 600 ~/.ssh/cicd-robot
           ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
 
       - name: Deploy to VM
         run: |
 
           # 先清空目標目錄
-          ssh -i ~/.ssh/deployer ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "rm -rf /home/deployer/app/admin/*"
+          ssh -i ~/.ssh/cicd-robot ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "rm -rf /home/cicd-robot/deploy/admin/*"
           
           # 複製新檔案
-          scp -i ~/.ssh/deployer -r dist/* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/deployer/app/admin/
+          scp -i ~/.ssh/cicd-robot -r dist/* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/cicd-robot/deploy/admin/

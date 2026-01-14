@@ -2,8 +2,6 @@
   <VerticalLayout>
     <PageTitle title="商品列表" subtitle="eCommerce" />
 
-    <Cropper></Cropper>
-
     <b-row>
       <b-col cols="12">
         <b-card no-body>
