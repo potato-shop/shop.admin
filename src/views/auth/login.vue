@@ -1,6 +1,6 @@
 <template>
   <AuthLayout show-footer>
-    <h3 class="fw-semibold mb-2">土豆後台123</h3>
+    <h3 class="fw-semibold mb-2">土豆後台</h3>
 
     <b-form @submit.prevent="handleLogin" class="text-start mb-3">
       <div v-if="error.length > 0" class="mb-2 text-danger">{{ error }}</div>
