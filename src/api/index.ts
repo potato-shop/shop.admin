@@ -1,9 +1,8 @@
 import axios from 'axios';
 import type { User } from '@/types/productType';
 
-export const apiBase = import.meta.env.VITE_API_BASE_URL;
-export const assetUrl = import.meta.env.VITE_ASSET_URL;
-
+export const apiBase = 'https://api.potatoshop.tw';
+export const assetUrl = 'https://storage.googleapis.com/potato-shop';
 
 axios.defaults.baseURL = apiBase;
 axios.interceptors.request.use(
