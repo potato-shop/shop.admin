@@ -1,7 +1,7 @@
 import type { User } from '@/types/productType';
 import { getUserAPI } from '../api';
 import { ref } from 'vue';
-import { apiBase } from '../api';
+import {  assetUrl } from '../api';
 import { useRouter } from 'vue-router';
 
 export const globalUserState = ref<User>({
@@ -9,7 +9,7 @@ export const globalUserState = ref<User>({
   Email: '',
   Name: '',
   Password: '',
-  AvatarURL: '',
+  Avatar: '',
   Role: '',
   Phone: '',
   Address: '',
@@ -27,7 +27,7 @@ export async function setGlobalUserState() {
 
   const user = await getUserAPI();
   if (user.ID) {
-    user.AvatarURL = `${apiBase}/api/${user.AvatarURL}`;
+    user.Avatar = `${assetUrl}/${user.Avatar}`;
     globalUserState.value = user;
   } else {
     localStorage.removeItem('token');
@@ -41,7 +41,7 @@ export async function clearGlobalUserState() {
     Email: '',
     Name: '',
     Password: '',
-    AvatarURL: '',
+    Avatar: '',
     Role: '',
     Phone: '',
     Address: '',

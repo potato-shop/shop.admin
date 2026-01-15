@@ -60,7 +60,7 @@ export interface User {
   Email: string;
   Name: string;
   Password: string;
-  AvatarURL: string;
+  Avatar: string;
   Role: string;
   Address: string;
   Phone: string;

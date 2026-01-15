@@ -44,7 +44,7 @@
                 <b-td>
                   <div class="d-flex justify-content-start align-items-center gap-3">
                     <div @click="openUpdateUserImageModal(item)" class="avatar-md" style="cursor: pointer">
-                      <img :src="`${apiBase}/api/${item.AvatarURL}`" class="img-fluid rounded-2" />
+                      <img :src="`${apiBase}/api/${item.Avatar}`" class="img-fluid rounded-2" />
                     </div>
                   </div>
                 </b-td>
@@ -120,7 +120,7 @@ export interface User {
   Email: string;
   Name: string;
   Password: string;
-  AvatarURL: string;
+  Avatar: string;
   Role: string;
   Address: string;
   Phone: string;
@@ -191,7 +191,7 @@ const updateUserImageLogic = ref<{
 function openUpdateUserImageModal(item: User) {
   updateUserImageLogic.value.isShowModal = true;
   updateUserImageLogic.value.form.ID = item.ID;
-  updateUserImageLogic.value.form.ImageURL = `${apiBase}/api/${item.AvatarURL}`;
+  updateUserImageLogic.value.form.ImageURL = `${apiBase}/api/${item.Avatar}`;
 }
 
 function handleFileChange(event: Event) {

@@ -2,6 +2,8 @@ import axios from 'axios';
 import type { User } from '@/types/productType';
 
 export const apiBase = import.meta.env.VITE_API_BASE_URL;
+export const assetUrl = import.meta.env.VITE_ASSET_URL;
+
 
 axios.defaults.baseURL = apiBase;
 axios.interceptors.request.use(
@@ -37,7 +39,7 @@ export async function addCategoryAPI(payload: { Name: string; Description: strin
   return await axios.post('/api/category', payload);
 }
 export async function updateCategoryAPI(payload: { CategoryID: number; Name: string; Description: string }) {
-  return await axios.put(`/api/admin/categories/${payload.CategoryID}`, {
+  return await axios.put(`/api/categories/${payload.CategoryID}`, {
     Name: payload.Name,
     Description: payload.Description,
   });
@@ -49,12 +51,12 @@ export async function getCategoryListAPI(payload: { currentPage: number; perPage
 }
 
 export async function deleteCategoryAPI(categoryId: number) {
-  return await axios.delete(`/api/admin/categories/${categoryId}`);
+  return await axios.delete(`/api/categories/${categoryId}`);
 }
 
 // 商品
 export async function addProductAPI(payload: FormData) {
-  return await axios.post('/api/admin/products', payload, {
+  return await axios.post('/api/products', payload, {
     headers: {
       'Content-Type': 'multipart/form-data',
     },
@@ -68,7 +70,7 @@ export async function updateProductAPI(payload: {
   Price: number;
   StockQuantity: number;
 }) {
-  return await axios.put(`/api/admin/products/${payload.ProductID}`, {
+  return await axios.put(`/api/products/${payload.ProductID}`, {
     CategoryID: payload.CategoryID,
     Name: payload.Name,
     Description: payload.Description,
@@ -77,7 +79,7 @@ export async function updateProductAPI(payload: {
   });
 }
 export async function updateProductImageAPI(payload: FormData, productId: number) {
-  return await axios.put(`/api/admin/products/${productId}/image`, payload, {
+  return await axios.put(`/api/products/${productId}/image`, payload, {
     headers: {
       'Content-Type': 'multipart/form-data',
     },
@@ -91,23 +93,23 @@ export async function getProductListAPI(payload: {
   categoryId: number;
 }) {
   return await axios.get(
-    `/api/admin/products?currentPage=${payload.currentPage}&perPage=${payload.perPage}&name=${payload.name}&categoryId=${payload.categoryId}`
+    `/api/products?currentPage=${payload.currentPage}&perPage=${payload.perPage}&name=${payload.name}&categoryId=${payload.categoryId}`
   );
 }
 
 export async function deleteProductAPI(productId: number) {
-  return await axios.delete(`/api/admin/products/${productId}`);
+  return await axios.delete(`/api/products/${productId}`);
 }
 
 // 客戶
 export async function getUserListAPI(payload: { CurrentPage: number; PerPage: number; Name: string; Role: string }) {
   return await axios.get(
-    `/api/admin/users?CurrentPage=${payload.CurrentPage}&PerPage=${payload.PerPage}&Name=${payload.Name}&Role=${payload.Role}`
+    `/api/users?CurrentPage=${payload.CurrentPage}&PerPage=${payload.PerPage}&Name=${payload.Name}&Role=${payload.Role}`
   );
 }
 
 export async function updateUserImageAPI(payload: FormData, userId: number) {
-  return await axios.put(`/api/admin/users/${userId}/image`, payload, {
+  return await axios.put(`/api/users/${userId}/image`, payload, {
     headers: {
       'Content-Type': 'multipart/form-data',
     },
@@ -116,11 +118,11 @@ export async function updateUserImageAPI(payload: FormData, userId: number) {
 
 // 訂單
 export async function getOrderListAPI(payload: { currentPage: number; perPage: number }) {
-  return await axios.get(`/api/admin/orders?currentPage=${payload.currentPage}&perPage=${payload.perPage}`);
+  return await axios.get(`/api/orders?currentPage=${payload.currentPage}&perPage=${payload.perPage}`);
 }
 
 export async function updateOrderAPI(payload: { OrderID: number; Status: string }) {
-  return await axios.put(`/api/admin/orders/${payload.OrderID}`, {
+  return await axios.put(`/api/orders/${payload.OrderID}`, {
     Status: payload.Status,
   });
 }

@@ -44,7 +44,7 @@
                 <b-td>
                   <div class="d-flex justify-content-start align-items-center gap-3">
                     <div @click="openUpdateUserImageModal(item)" class="avatar-md" style="cursor: pointer">
-                      <img :src="`${apiBase}/api/${item.AvatarURL}`" class="img-fluid rounded-2" />
+                      <img :src="`${assetUrl}/${item.Avatar}`" class="img-fluid rounded-2" />
                     </div>
                   </div>
                 </b-td>
@@ -112,7 +112,7 @@
 import VerticalLayout from '@/layouts/VerticalLayout.vue';
 import PageTitle from '@/components/PageTitle.vue';
 import { watch, ref, onMounted } from 'vue';
-import { getUserListAPI, updateUserImageAPI, apiBase } from '@/api/index';
+import { getUserListAPI, updateUserImageAPI, apiBase, assetUrl } from '@/api/index';
 import { showToast } from '@/helpers/toast';
 
 export interface User {
@@ -120,7 +120,7 @@ export interface User {
   Email: string;
   Name: string;
   Password: string;
-  AvatarURL: string;
+  Avatar: string;
   Role: string;
   Address: string;
   Phone: string;
@@ -153,6 +153,7 @@ async function setCustomerList() {
     Role: 'admin',
   });
   customerList.value = res.data?.List;
+  console.log('🚀 ~ setCustomerList ~ customerList.value:', customerList.value);
   pagination.value.totalRows = res.data.Total;
 }
 
@@ -191,7 +192,7 @@ const updateUserImageLogic = ref<{
 function openUpdateUserImageModal(item: User) {
   updateUserImageLogic.value.isShowModal = true;
   updateUserImageLogic.value.form.ID = item.ID;
-  updateUserImageLogic.value.form.ImageURL = `${apiBase}/api/${item.AvatarURL}`;
+  updateUserImageLogic.value.form.ImageURL = `${assetUrl}/${item.Avatar}`;
 }
 
 function handleFileChange(event: Event) {

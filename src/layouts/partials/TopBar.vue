@@ -29,7 +29,7 @@
               aria-haspopup="false"
               aria-expanded="false"
             >
-              <img :src="globalUserState.AvatarURL" width="32" class="rounded-circle me-lg-2 d-flex" alt="user-image" />
+              <img :src="globalUserState.Avatar" width="32" class="rounded-circle me-lg-2 d-flex" alt="user-image" />
               <span class="d-lg-flex flex-column gap-1 d-none">
                 <h5 class="my-0">{{ globalUserState.Name }}</h5>
               </span>
