@@ -55,7 +55,7 @@ export async function deleteCategoryAPI(categoryId: number) {
 
 // 商品
 export async function addProductAPI(payload: FormData) {
-  return await axios.post('/api/products', payload, {
+  return await axios.post('/api/product', payload, {
     headers: {
       'Content-Type': 'multipart/form-data',
     },

@@ -54,7 +54,7 @@
                 <b-td>
                   <div class="d-flex justify-content-start align-items-center gap-3">
                     <div @click="openUpdateProductImageModal(item)" class="avatar-md" style="cursor: pointer">
-                      <img :src="`${apiBase}/api/${item.ImageURL}`" alt="Product-1" class="img-fluid rounded-2" />
+                      <img :src="`${assetUrl}/${item.ImageURL}`" alt="Product-1" class="img-fluid rounded-2" />
                     </div>
                   </div>
                 </b-td>
@@ -282,6 +282,7 @@ import {
   deleteProductAPI,
   updateProductAPI,
   updateProductImageAPI,
+  assetUrl,
 } from '@/api/index';
 import { showToast } from '@/helpers/toast';
 
