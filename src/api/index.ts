@@ -1,8 +1,8 @@
 import axios from 'axios';
 import type { User } from '@/types/productType';
 
-// export const apiBase = 'https://api.potatoshop.tw';
-export const apiBase = 'http://127.0.0.1:8000';
+export const apiBase = 'https://api.potatoshop.tw';
+// export const apiBase = 'http://127.0.0.1:8000';
 export const assetUrl = 'https://storage.googleapis.com/potato-shop';
 
 axios.defaults.baseURL = apiBase;
