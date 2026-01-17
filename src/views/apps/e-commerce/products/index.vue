@@ -468,7 +468,7 @@ const updateProductImageLogic = ref<{
 function openUpdateProductImageModal(item: Product) {
   updateProductImageLogic.value.isShowModal = true;
   updateProductImageLogic.value.form.ID = item.ID;
-  updateProductImageLogic.value.form.ImageURL = `${apiBase}/api/${item.ImageURL}`;
+  updateProductImageLogic.value.form.ImageURL = `${assetUrl}/${item.ImageURL}`;
 }
 
 function handleFileChange(event: Event) {
