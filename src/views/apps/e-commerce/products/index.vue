@@ -275,7 +275,6 @@ import PageTitle from '@/components/PageTitle.vue';
 import { onMounted, watch, ref } from 'vue';
 import VueSelect from 'vue3-select-component';
 import {
-  apiBase,
   getProductListAPI,
   getCategoryListAPI,
   addProductAPI,
@@ -351,7 +350,7 @@ watch(
   () => pagination.value.currentPage,
   async () => {
     await setProductList();
-  }
+  },
 );
 
 watch(searchCategoryId, async () => {
@@ -438,7 +437,7 @@ async function updateProduct() {
     Name: updateProductLogic.value.form.Name!,
     Description: updateProductLogic.value.form.Description!,
     Price: Number(updateProductLogic.value.form.Price!),
-    StockQuantity: updateProductLogic.value.form.StockQuantity!,
+    StockQuantity: Number(updateProductLogic.value.form.StockQuantity!),
   });
   showToast('更新成功');
   await setProductList();
