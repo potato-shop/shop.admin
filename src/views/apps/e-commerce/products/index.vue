@@ -117,17 +117,6 @@
             />
           </b-col>
 
-          <!-- 庫存數量 -->
-          <b-col lg="6">
-            <FormInput
-              v-model="addProductLogic.form.StockQuantity"
-              id="quantity"
-              label="庫存數量"
-              placeholder="請輸入庫存數量"
-              group-class="mb-3"
-            />
-          </b-col>
-
           <!-- 商品訂價 -->
           <b-col lg="6">
             <FormInput
@@ -135,6 +124,17 @@
               id="productCode"
               label="商品訂價"
               placeholder="請輸入商品訂價"
+              group-class="mb-3"
+            />
+          </b-col>
+
+          <!-- 庫存數量 -->
+          <b-col lg="6">
+            <FormInput
+              v-model="addProductLogic.form.StockQuantity"
+              id="quantity"
+              label="庫存數量"
+              placeholder="請輸入庫存數量"
               group-class="mb-3"
             />
           </b-col>

@@ -44,7 +44,7 @@
                 <b-td>
                   <div class="d-flex justify-content-start align-items-center gap-3">
                     <div @click="openUpdateUserImageModal(item)" class="avatar-md" style="cursor: pointer">
-                      <img :src="`${apiBase}/api/${item.Avatar}`" class="img-fluid rounded-2" />
+                      <img :src="`${assetUrl}/${item.Avatar}`" class="img-fluid rounded-2" />
                     </div>
                   </div>
                 </b-td>
@@ -112,7 +112,7 @@
 import VerticalLayout from '@/layouts/VerticalLayout.vue';
 import PageTitle from '@/components/PageTitle.vue';
 import { watch, ref, onMounted } from 'vue';
-import { getUserListAPI, updateUserImageAPI, apiBase } from '@/api/index';
+import { getUserListAPI, updateUserImageAPI, apiBase, assetUrl } from '@/api/index';
 import { showToast } from '@/helpers/toast';
 
 export interface User {
@@ -150,7 +150,7 @@ async function setCustomerList() {
     CurrentPage: pagination.value.currentPage,
     PerPage: pagination.value.perPage,
     Name: searchName.value,
-    Role: 'customer',
+    Role: 'user',
   });
   customerList.value = res.data?.List;
   pagination.value.totalRows = res.data.Total;
@@ -164,7 +164,7 @@ watch(
   () => pagination.value.currentPage,
   async () => {
     await setCustomerList();
-  }
+  },
 );
 
 // 更新使用者圖片
