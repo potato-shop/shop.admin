@@ -118,7 +118,7 @@ export async function updateUserImageAPI(payload: FormData, userId: number) {
 
 // 訂單
 export async function getOrderListAPI(payload: { currentPage: number; perPage: number }) {
-  return await axios.get(`/api/order?currentPage=${payload.currentPage}&perPage=${payload.perPage}`);
+  return await axios.get(`/api/orders?currentPage=${payload.currentPage}&perPage=${payload.perPage}`);
 }
 
 export async function updateOrderAPI(payload: { OrderID: number; Status: string }) {
