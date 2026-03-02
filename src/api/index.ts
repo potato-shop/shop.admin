@@ -12,7 +12,7 @@ axios.interceptors.request.use(
     config.headers.Authorization = `Bearer ${token}`;
     return config;
   },
-  () => {}
+  () => {},
 );
 
 export async function signup() {
@@ -46,7 +46,7 @@ export async function updateCategoryAPI(payload: { CategoryID: number; Name: str
 }
 export async function getCategoryListAPI(payload: { currentPage: number; perPage: number; name: string }) {
   return await axios.get(
-    `/api/categories?currentPage=${payload.currentPage}&perPage=${payload.perPage}&name=${payload.name}`
+    `/api/categories?currentPage=${payload.currentPage}&perPage=${payload.perPage}&name=${payload.name}`,
   );
 }
 
@@ -93,7 +93,7 @@ export async function getProductListAPI(payload: {
   categoryId: number;
 }) {
   return await axios.get(
-    `/api/products?currentPage=${payload.currentPage}&perPage=${payload.perPage}&name=${payload.name}&categoryId=${payload.categoryId}`
+    `/api/products?currentPage=${payload.currentPage}&perPage=${payload.perPage}&name=${payload.name}&categoryId=${payload.categoryId}`,
   );
 }
 
@@ -104,7 +104,7 @@ export async function deleteProductAPI(productId: number) {
 // 客戶
 export async function getUserListAPI(payload: { CurrentPage: number; PerPage: number; Name: string; Role: string }) {
   return await axios.get(
-    `/api/users?CurrentPage=${payload.CurrentPage}&PerPage=${payload.PerPage}&Name=${payload.Name}&Role=${payload.Role}`
+    `/api/users?CurrentPage=${payload.CurrentPage}&PerPage=${payload.PerPage}&Name=${payload.Name}&Role=${payload.Role}`,
   );
 }
 
@@ -124,5 +124,14 @@ export async function getOrderListAPI(payload: { currentPage: number; perPage: n
 export async function updateOrderAPI(payload: { OrderID: number; Status: string }) {
   return await axios.put(`/api/order/${payload.OrderID}`, {
     Status: payload.Status,
+  });
+}
+
+// AI
+export async function analyzeImageAPI(payload: FormData) {
+  return await axios.post(`/api/analyze/image`, payload, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
   });
 }

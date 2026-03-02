@@ -14,17 +14,16 @@
     <p class="fs-13 fw-semibold">Or Sign Up With Email</p>
 
     <b-form class="text-start mb-3">
-
       <b-form-group label="Your Name" class="mb-3">
-        <b-form-input type="text" placeholder="Enter your name"/>
+        <b-form-input type="text" placeholder="Enter your name" />
       </b-form-group>
 
       <b-form-group label="Email" class="mb-3">
-        <b-form-input type="email" placeholder="Enter your email"/>
+        <b-form-input type="email" placeholder="Enter your email" />
       </b-form-group>
 
       <b-form-group label="Password" class="mb-3">
-        <b-form-input type="password" placeholder="Enter your password"/>
+        <b-form-input type="password" placeholder="Enter your password" />
       </b-form-group>
 
       <div class="d-flex justify-content-between mb-3">
@@ -36,14 +35,13 @@
       </div>
     </b-form>
 
-    <p class="text-danger fs-14 mb-4">Already have an account?
-      <router-link :to="{name:'auth.login'}"
-                   class="fw-semibold text-dark ms-1">Login !
-      </router-link>
+    <p class="text-danger fs-14 mb-4">
+      Already have an account?
+      <router-link :to="{ name: 'auth.login' }" class="fw-semibold text-dark ms-1">Login ! </router-link>
     </p>
   </AuthLayout>
 </template>
 
 <script setup lang="ts">
-import AuthLayout from "@/layouts/AuthLayout.vue";
+import AuthLayout from '@/layouts/AuthLayout.vue';
 </script>

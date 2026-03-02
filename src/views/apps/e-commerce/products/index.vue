@@ -164,8 +164,16 @@
         </b-row>
       </b-card-body>
 
-      <b-card-header class="">
-        <b-card-title tag="h4" style="margin-bottom: 8px; font-size: 13px">商品圖片</b-card-title>
+      <b-card-header class="d-flex align-items-center">
+        <b-card-title tag="h4" style="margin-bottom: 0; font-size: 13px; margin-right: auto">商品圖片</b-card-title>
+        <b-button
+          v-if="globalUserState.Name == 'AI 測試機器人'"
+          size="sm"
+          variant="outline-primary"
+          @click="analyzeImage"
+        >
+          AI 圖片分析
+        </b-button>
       </b-card-header>
       <b-card-body>
         <b-col cols="12 mb-2">
@@ -281,9 +289,12 @@ import {
   deleteProductAPI,
   updateProductAPI,
   updateProductImageAPI,
+  analyzeImageAPI,
   assetUrl,
 } from '@/api/index';
 import { showToast } from '@/helpers/toast';
+import { globalUserState, setGlobalUserState } from '@/stores/globalState';
+console.log('🚀 ~ globalUserState:', globalUserState.value.Name);
 
 interface Category {
   ID: number;
@@ -504,5 +515,18 @@ async function deleteProduct(event: any) {
   showToast('已刪除');
   await setProductList();
   deleteLogic.value.isShowModal = false;
+}
+
+// AI 圖片分析
+async function analyzeImage() {
+  const file = addProductLogic.value.form.UploadedFile?.[0];
+  if (!file) return;
+  const formData = new FormData();
+  formData.append('UploadedFile', file);
+  const res = await analyzeImageAPI(formData);
+  addProductLogic.value.form.Name = res.data.title;
+  addProductLogic.value.form.Price = res.data.price;
+  addProductLogic.value.form.Description = res.data.description;
+  showToast('分析成功');
 }
 </script>
